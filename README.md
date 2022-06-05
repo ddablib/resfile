@@ -1,367 +1,65 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--
- * This Source Code Form is subject to the terms of the Mozilla Public License,
- * v. 2.0. If a copy of the MPL was not distributed with this file, You can
- * obtain one at http://mozilla.org/MPL/2.0/
- *
- * Copyright (C) 2010-2014, Peter Johnson (www.delphidabbler.com).
- *
- * Read-me file for Resource File Unit
--->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+# Resource File Unit
 
-<head>
+## Description
 
-<title>
-  DelphiDabbler Resource File Unit ReadMe
-</title>
+This unit contains classes that encapsulate Windows 32 bit binary resource files and the resources contained in them. The main functionality is provided by two classes:
 
-<style type="text/css">
-  body {
-    margin: 1em;
-    padding: 0;
-    font-family: Verdana, Arial, sans-serif;
-    font-size: 9pt;
-    line-height: 150%;
-  }
-  h1 {
-    margin: 0 0 1em 0;
-    padding: 0.5em;
-    border: 1px silver solid;
-    background-color: #eee;
-    font-size: 13pt;
-    font-weight: bold;
-    text-align: center;
-  }
-  h1 .subtitle {
-    font-style: italic;
-    color: #336;
-  }
-  h2 {
-    margin: 1em 0 0 0;
-    padding: 0;
-    padding-bottom: 6px;
-    border-bottom: 1px silver solid;
-    font-size: 11pt;
-    font-weight: bold;
-  }
-  h3 {
-    margin: 0.5em 0 0 0;
-    padding: 0;
-    font-size: 9pt;
-    font-weight: bold;
-  }
-  p {
-    margin: 0.5em 0 0 0;
-    padding: 0;
-  }
-  ul, ol {
-    margin: 0.5em 0 0 3em;
-    padding: 0;
-  }
-  ul {
-    list-style-type: square;
-  }
-  ul.spaced li,
-  ol.spaced li {
-    margin-top: 0.5em;
-  }
-  ul.spaced li,
-  ol.spaced li {
-    margin-top: 0.5em;
-  }
-  ul.unspaced li,
-  ol.unspaced li {
-    margin-top: 0;
-  }
-  ul.unspaced li.first,
-  ol.unspaced li.first {
-    margin-top: 0.5em;
-  }
-  code {
-    font-family: "Courier New", Courier, monospace;
-  }
-  a:link {
-    color: #336;
-    text-decoration: underline;
-  }
-  a:visited {
-    color: #669;
-    text-decoration: underline;
-  }
-  a:active {
-    color: #336;
-    text-decoration: underline;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  .gototop {
-    margin: 1em 0 0 0;
-    padding: 0.3em 0 0 0;
-    text-align: center;
-    position: relative;
-    float: right;
-    font-weight: bold;
-  }
-  .pullout {
-    border-left: 8px silver solid;
-    background-color: #eee;
-    margin: 0.5em 0 0 0;
-    padding: 0.25em 0.5em;
-    font-style: italic;
-  }
-  .indent {
-    margin-left: 3em;
-  }
-  .highlight {
-    color: #336;
-    font-style: italic;
-    font-weight: bold;
-  }
-  .endnotes {
-    margin: 1.5em 0 0 0;
-    padding: 1em 0 0 0;
-    border-top: 1px silver solid;
-  }
-  .comments {
-    font-style: italic;
-  }
-  .copyright,
-  .copyright a:link,
-  .copyright a:visited,
-  .copyright a:ac  tive {
-    margin: 1em 0 0 0;
-    color: gray;
-    font-size: 8pt;
-    text-align: right;
-  }
-</style>
+* _TPJResourceFile_ – encapsulates the contents of a whole resource file and provides methods and properties for reading, finding, editing, adding and deleting resources. Resource files can be read from and written to files or streams.
+* _TPJResourceEntry_ – encapsulates a single resource within the file and provides properties to access its header record and its raw data. The class also has methods to check the identity of the resource. The resource's raw data is accessible both as an array of bytes and via a _TStream_ interface.
 
-</head>
+This class has no knowledge of resource data formats and sees the data simply as a raw sequence of bytes. It is for the user of the class to interpret the data correctly.
 
-<body>
+In addition to the two main classes, some helper functions, constants and an exception class are also provided.
 
-<h1>
-  <div>Resource File Unit</div>
-  <span class="subtitle">ReadMe</span>
-</h1>
+For full details please see the [online documentation](https://delphidabbler.com/url/resfile-docs).
 
-<h2 id="description">
-  Description
-</h2>
+## Compatibility
 
-<p>
-  This unit contains classes that encapsulate Windows 32 bit binary resource
-  files and the resources contained in them. The main functionality is provided
-  by two classes:
-</p>
+The unit has been tested on Delphi 7, 2006 to 2010 and XE to XE4. It is believed to work with compilers back to Delphi 4, but this has not been tested in the current release.
 
-<ul>
-  <li>
-    <var>TPJResourceFile</var> &ndash; encapsulates the contents of a whole
-    resource file and provides methods and properties for reading, finding,
-    editing, adding and deleting resources. Resource files can be read from and
-    written to files or streams.
-  </li>
-  <li>
-    <div>
-      <var>TPJResourceEntry</var> &ndash; encapsulates a single resource within
-      the file and provides properties to access its header record and its raw
-      data. The class also has methods to check the identity of the resource.
-      The resource's raw data is accessible both as an array of bytes and via a
-      <var>TStream</var> interface.
-    </div>
-    <div class="pullout">
-      This class has no knowledge of resource data formats and sees the data
-      simply as a raw sequence of bytes. It is for the user of the class to
-      interpret the data correctly.
-    </div>
-  </li>
-</ul>
+The unit is compatible with the Delphi 32 bit and 64 bit Windows compilers. Because resource files are Windows specific the unit is not compatible with non-Windows platforms.
 
-<p>
-  In addition to the two main classes, some helper functions, constants and an
-  exception class are also provided.
-</p>
+The unit is not dependent on the VCL or on FireMonkey, so can be used with or without either library.
 
-<p>
-  The unit is maintained as part of the <a
-    href="http://code.google.com/p/ddab-lib/"
-  >Delphi Dabbler Code Library</a> project on GoogleCode.
-</p>
+## Installation
 
-<h2 id="compatibility">
-  Compatibility
-</h2>
+The _Resource File Unit_ and documentation are supplied in a zip file. Before installing you need to extract all the files from the zip file, preserving the directory structure. The following files will be extracted:
 
-<p>
-  The unit has been tested on Delphi 7, 2006 to 2010 and XE to XE4. It is
-  believed to work with compilers back to Delphi 4, but this has not been tested
-  in the current release.
-</p>
+* **`PJResFile.pas`** – Main source code.
+* `README.md` – This file.
+* `CHANGELOG.md` – The project's change log.
+* `MPL-2.txt` – Mozilla Public License v2.0.
+* `Documentation.url` – Short-cut to the online documentation.
 
-<p>
-  The unit is compatible with the Delphi 32 bit and 64 bit Windows compilers.
-  Because resource files are Windows specific the unit is not compatible with
-  non-Windows platforms.
-</p>
+There are four possible ways to use the unit.
 
-<p>
-  The unit is not dependent on the VCL or on FireMonkey, so can be used with
-  or without either library.
-</p>
+1. The simplest way is to add `PJResFile.pas` to your projects as you need it.
+2. To make the unit easier to re-use you can either copy it to a folder on your Delphi search path, or add the folder where you extracted the unit to the Delphi Search path. You then simply use the unit as required without needing to add it to your project.
+3. For maximum portability you can add the unit to a Delphi design time package. If you need help doing this [see here](https://delphidabbler.com/url/install-comp).
+4. If you use Git you can add the [`ddablib/resfile`](https://github.com/ddablib/resfile) GitHub repository as a Git submodule and add it to your project. Obviously, it's safer if you fork the repo and use your copy, just in case `ddablib/resfile` ever goes away.
 
-<h2 id="installation">
-  Installation
-</h2>
+## Demo Code
 
-<p>
-  The Resource File Unit and documentation are supplied in a zip file. Before
-  installing you need to extract all the files from the zip file, preserving the
-  directory structure. The following files will be extracted:
-</p>
+No demo programs are included in the download. However there are numerous worked examples available as part of the [online documentation](https://delphidabbler.com/url/resfile-docs). There is a link to the examples on the documentation landing page.
 
-<ul>
-  <li>
-    <code><strong>PJResFile.pas</strong></code> &ndash; Main source code.
-  </li>
-  <li>
-    <code>ReadMe.htm</code> &ndash; This file.
-  </li>
-  <li>
-    <code>ChangeLog.txt</code> &ndash; The project's change log.
-  </li>
-  <li>
-    <code>MPL-2.txt</code> &ndash; Mozilla Public License v2.0.
-  </li>
-  <li>
-    <code>Documentation.url</code> &ndash; Short-cut to the online
-    documentation.
-  </li>
-</ul>
+## Update History
 
-<p>
-  There are three possible ways to use the unit.
-</p>
+A complete change log is provided in [`CHANGELOG.md`](https://github.com/ddablib/resfile/blob/main/CHANGELOG.md) that is included in the download.
 
-<ol class="spaced">
-  <li>
-    The simplest way is to add <code>PJResFile.pas</code> to your projects as
-    you need it.
-  </li>
-  <li>
-    To make the unit easier to re-use you can either copy it to a folder on your
-    Delphi search path, or add the folder where you extracted the unit to the
-    Delphi Search path. You then simply use the unit as required without needing
-    to add it to your project.
-  </li>
-  <li>
-    For maximum portability you can add the unit to a Delphi design time
-    package. If you need help doing this <a
-      href="http://www.delphidabbler.com/url/install-comp"
-    >see here</a>.
-  </li>
-</ol>
+## License and Disclaimer
 
-<h2 id="docs">
-  Documentation
-</h2>
+The _Resource File Unit_ (`PJResFile.pas`) is released under the terms of the . [Mozilla Public License v2.0](https://www.mozilla.org/MPL/2.0/).
 
-<p>
-  All the classes and routines in the Resource File Unit are documented
-  comprehensively <a
-    href="http://www.delphidabbler.com/url/resfile-docs"
-  >online</a>.
-</p>
+All relevant trademarks are acknowledged.
 
-<h2 id="demo">
-  Demo Code
-</h2>
+## Bugs and Feature Requests
 
-<p>
-  No demo programs are included in the download. However there are numerous
-  worked examples available as part of the <a
-    href="http://www.delphidabbler.com/url/resfile-docs"
-  >online documentation</a>. There is a link to the examples on the
-  documentation landing page.
-</p>
+Bugs can be reported or new features requested via the project's [Issue Tracker](https://github.com/ddablib/resfile/issues). A GitHub account is required.
 
-<h2 id="update">
-  Update History
-</h2>
+Please check if an issue has already been created for a similar report or request. If so then please add a comment containing as much information as you can to the existing issue, or if you've nothing to add, just add a :+1: (`:+1:`) comment. If there is no suitable existing issue then please add a new issue and give as much information as possible.
 
-<p>
-   A complete change log is provided in the file <code>ChangeLog.txt</code> that
-   is included in the download.
-</p>
+## About the Author
 
-<h2 id="license">
-  License and Disclaimer
-</h2>
+I'm Peter Johnson – a hobbyist programmer living in Ceredigion in West Wales, UK, writing mainly in Delphi. My programs and other library code are available from: [https://delphidabbler.com/](https://delphidabbler.com/).
 
-<p>
-  The Resource File Unit (<code>PJResFile.pas</code>) is released under the
-  terms of the .
-  <a
-    href="http://www.mozilla.org/MPL/2.0/"
-  >Mozilla Public License v2.0</a>.
-</p>
-
-<p>
-  All relevant trademarks are acknowledged.
-</p>
-
-<h2 id="bugs">
-  Bugs and Feature Requests
-</h2>
-
-<p>
-  Bugs can be reported or new features requested via the <a
-    href="http://www.delphidabbler.com/url/ddlib-issues"
-  >Issue Tracker</a>.
-</p>
-
-<p>
-  If no similar report or request has been recorded already, use the <em>New
-  Issue</em> link to add a new issue. Please select the most appropriate
-  template from the <em>Templates</em> drop down list and change the
-  <code>Project-unspecified</code> label to <code>Project-resfile</code>.
-</p>
-
-<h2 id="author">
-  About the Author
-</h2>
-
-<p>
-  I'm Peter Johnson &ndash; a hobbyist programmer living in Ceredigion in West
-  Wales, UK, writing write mainly in Delphi. My programs and code are available
-  from: <a
-    href="http://www.delphidabbler.com/"
-  >http://www.delphidabbler.com/</a>.
-</p>
-
-<p>
-  I can be <a
-    href="http://www.delphidabbler.com/contact"
-  >contacted via the website</a>.
-</p>
-
-<div class="endnotes">
-  <div class="comments">
-    Please <a
-      href="http://www.delphidabbler.com/contact"
-    > let me know</a> if you have any comments about the classes, but please use
-    the Issue Tracker above to report bugs and request new features.
-  </div>
-  <div class="copyright">
-    This document is copyright &copy; 2010-2014, P D Johnson, <a
-      href="http://www.delphidabbler.com/"
-    >www.delphidabbler.com</a>.
-  </div>
-</div>
-
-</body>
-
-</html>
+This document is copyright © 2010-2022, [P D Johnson](https://gravatar.com/delphidabbler).
