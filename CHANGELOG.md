@@ -1,0 +1,28 @@
+# Change Log for Resource File Unit
+
+## v1.1.0 of 16 January 2014
+
++ Implemented feature request: ~~issue#6~~ "Add enumerator to TPJResourceFile". This enables code compiled with Delphi 2005 and later to enumerate the resources contained in a resource file using for..in loops. Earlier compilers can use the enumerator explicitly.
++ Implemented feature request: ~~issue#8~~ "Expose a resource entry's data as an array of bytes" by adding the new _DataBytes_ property to _TPJResourceEntry_.
++ New _LoadDataFromFile_ and _ClearData_ methods also added to _TPJResourceEntry_.
++ Simplified implementation of _IsEqualResID_ function.
++ Unit names in source code are now qualified with their namespace when compiled with Delphi XE2 and later.
++ Fixed problem with compiler directives in Resource File Unit that was causing compilation to fail on Delphi XE5.
++ Unit source and some documentation files are now licensed under the Mozilla Public License v2.0.
++ Documentation changes:
+  + MPL license file updated to MPL v2.0 and file renamed.
+  + URL used by internet short-cut to online documentation changed and short-cut file renamed.
+  + Read-me file overhauled.
+  + Open Office format and PDF documentation removed from the project: documentation is now online only.
+  + Some other minor documentation tweaks.
+
+## Release v1.0.1 of 18 March 2010
+
++ Inhibited unwanted compiler warnings on Delphi 7 and later.
++ Improved resource id string comparison code. Provided workaround for Delphi 4 (and 5?) which don't support these changes.
++ Re-factored some code.
++ Updated documentation and corrected some sample code to work with Unicode Delphis.
+
+## Release v1.0 of 17 September 2004
+
++ Original version.
